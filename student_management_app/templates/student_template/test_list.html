@@ -1,0 +1,11 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+Institute Test List
+{% endblock page_title %}
+{% block main_content %}
+{% for test in tests %}
+<li>
+<a href="{% url 'test_detail' test.pk %}">{{test.pk}} : {{test.name}}  {{test.average_test_score}}</a>
+{% endfor %}
+    </li>
+{% endblock main_content %}

@@ -1,0 +1,11 @@
+
+{% extends 'student_template/calendarbase.html' %}
+
+{% block content %}
+<div class="clearfix">
+	<a class="btn btn-info left" href="{% url 'planning' %}?{{ prev_month }}"> Previous Month </a>
+	<a class="btn btn-info right" href="{% url 'planning' %}?{{ next_month }}"> Next Month </a>
+	<a class="btn btn-info right" href="{% url 'new_plan' %}"> New Plan </a>
+</div>
+{{ calendar }}
+{% endblock %}

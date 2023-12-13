@@ -1,0 +1,28 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+School Subject Detail
+{% endblock page_title %}
+{% block main_content %}
+<h2>subject name : {{school_subject.subject_name}}</h2>
+<h3>teacher : {{school_subject.teacher_name}}</h3>
+<h3>school :{{school_subject.school_name}}</h3>
+<h3>total time studying per week : {{school_subject.total_time_studying_per_week}}</h3>
+<h3>score : {{school_subject.score}}</h3>
+<h3>has test in class : {{school_subject.has_test_in_class}}</h3>
+<h3>average test percentage : {{school_subject.average_test_percentage}}</h3>
+<h3>total test numbers : {{school_subject.total_test_numbers}}</h3>
+<h3>target test numbers : {{school_subject.target_test_numbers}}</h3>
+<h3>test_proficiency : {{school_subject.test_proficiency}}</h3>
+<hr>
+<h2>Assignment</h2>
+<ul>
+    {% for assignment in subject.homeworks.all %}
+    <li><a href="{% url 'assignment_detail' assignment.pk %}">{{ assignment.content }}</a> </li>
+    {% empty %}
+    <li>no assignment</li>
+    {% endfor %}
+</ul>
+<hr>
+
+<p><a href="{% url 'school_subject_edit' school_subject.pk %}"> Update subject</a> </p>
+{% endblock main_content %}

@@ -1,0 +1,25 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+Institute Subject Detail
+{% endblock page_title %}
+{% block main_content %}
+{% if assignment.school_subject %}
+    <p>subject : {{ assignment.school_subject }}</p>
+    {% else %}
+    <p> subject : {{assignment.institute_subject }}</p>
+    {% endif %}
+    <p> content : <a href="{% url 'assignment_download' assignment.pk %}"> download assignment {{assignment.content}}</a> </p>
+    {% if assignment.text %}
+    <p> text : {{ assignment.text }}</p>
+    {% endif %}
+<hr>
+    <ol>
+        {% for comment in comments %}
+        <li>{{ comment.message }}</li>
+        {% empty %}
+        <p>There are no messages</p>
+        {% endfor %}
+    </ol>
+<hr>
+{% include 'student_template/includes/message_form.html' %}
+{% endblock main_content %}

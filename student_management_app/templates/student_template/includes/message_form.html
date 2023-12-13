@@ -1,0 +1,6 @@
+<h2>Add a new message</h2>
+<form action="{% url 'assignment_message' assignment.pk %}" method="post">
+ {{ form.as_p }}
+ {% csrf_token %}
+ <p><input type="submit" value="Add message"></p>
+</form>

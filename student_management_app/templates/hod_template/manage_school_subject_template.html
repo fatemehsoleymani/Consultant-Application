@@ -1,0 +1,75 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Manage School Subject
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+
+
+           <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">School Subject Details</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Subject Name</th>
+                      <th>Teacher Name</th>
+                      <th>Student Name</th>
+                      <th>Total Study Time</th>
+                      <th>Score</th>
+                      <th>Has Test</th>
+                      <th>Percentage Average</th>
+                      <th>Test Numbers</th>
+                      <th>Target Test</th>
+                      <th>Proficiency</th>
+
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for subject in subjects %}
+                    <tr>
+                      <td>{{ subject.id }}</td>
+                      <td>{{ subject.subject_name }}</td>
+                      <td>{{ subject.teacher_name }}</td>
+                      <td>{{ subject.student_id.first_name }} {{ subject.student_id.last_name }}</td>
+                      <td>{{ subject.total_time_studying_per_week }}</td>
+                      <td>{{ subject.score }}</td>
+                      <td>{{ subject.has_test_in_class }}</td>
+                      <td>{{ subject.average_test_percentage }}</td>
+                      <td>{{ subject.total_test_numbers }}</td>
+                      <td>{{ subject.target_test_numbers }}</td>
+                      <td>{{ subject.test_proficiency }}</td>
+                      <td><a href="/edit_school_subject/{{ subject.id }}" class="btn btn-success">Edit</a></td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}

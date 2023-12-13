@@ -1,0 +1,10 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+Test Detail
+{% endblock page_title %}
+{% block main_content %}
+<p>name : {{test.name}}</p>
+<p> score : {{test.average_test_score}}</p>
+
+<p><a href="{% url 'test_edit' test.pk %}"> Update test</a> </p>
+{% endblock main_content %}

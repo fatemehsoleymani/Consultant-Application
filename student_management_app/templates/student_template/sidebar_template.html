@@ -1,0 +1,177 @@
+{% load static %}
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="" class="brand-link">
+      <img src="{% static 'dist/img/AdminLTELogo.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'dist/img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="{% url 'student_profile' %}" class="d-block">{{ user.username }}</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item">
+            {% url 'student_home' as student_home %}
+            <a href="{{ student_home }}" class="nav-link {% if request.path == student_home %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Home
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'student_feedback' as student_feedback %}
+            <a href="{{ student_feedback }}" class="nav-link {% if request.path == student_feedback %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                student feedback
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'manage_school_subject' as manage_school_subject %}
+             {% url 'edit_school_subject' subject_id=id as edit_school_subject %}
+            <a href="{% url 'manage_school_subject' %}" class="nav-link {% if request.path == manage_school_subject %} active {% endif %} {% if request.path == edit_school_subject %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                school subject
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'student_all_notification' as student_all_notification %}
+            <a href="{{ student_all_notification }}" class="nav-link {% if request.path == student_all_notification %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Notifications
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'student_profile' as student_profile %}
+            <a href="{{ student_profile }}" class="nav-link {% if request.path == student_profile %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                student profile
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'create_school_subject' as create_school_subject %}
+            <a href="{{ create_school_subject }}" class="nav-link {% if request.path == create_school_subject %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add School Subject
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'school_subjects_list' as school_subjects_list %}
+            <a href="{{ school_subjects_list }}" class="nav-link {% if request.path == school_subjects_list %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                School Subject List
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'create_institute_subject' as create_institute_subject %}
+            <a href="{{ create_institute_subject }}" class="nav-link {% if request.path == create_institute_subject %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Institute Subject
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            {% url 'institute_subjects_list' as institute_subjects_list %}
+            <a href="{{ institute_subjects_list }}" class="nav-link {% if request.path == institute_subjects_list %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Institute Subject List
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'test_create' as test_create %}
+            <a href="{{ test_create }}" class="nav-link {% if request.path == test_create %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Institute Test
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'test_list' as test_list %}
+            <a href="{{ test_list }}" class="nav-link {% if request.path == test_list %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Institute Test List
+              </p>
+            </a>
+          </li>
+            <li class="nav-item">
+            {% url 'assignment_create' as assignment_create %}
+            <a href="{{ assignment_create }}" class="nav-link {% if request.path == assignment_create %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Add Assignment
+              </p>
+            </a>
+          </li>
+              <li class="nav-item">
+            {% url 'assignment_list' as assignment_list %}
+            <a href="{{ assignment_list }}" class="nav-link {% if request.path == assignment_list %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               School Assignment List
+              </p>
+            </a>
+          </li>
+              <li class="nav-item">
+            {% url 'institute_assignment_list' as institute_assignment_list %}
+            <a href="{{ institute_assignment_list }}" class="nav-link {% if request.path == institute_assignment_list %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Institute Assignment List
+              </p>
+            </a>
+          </li>
+              <li class="nav-item">
+            {% url 'planning' as planning %}
+            <a href="{{ planning }}" class="nav-link {% if request.path == planning %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Planning Calendar
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            {% url 'implementation' as implementation %}
+            <a href="{{ implementation }}" class="nav-link {% if request.path == implementation %} active {% endif %}">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+               Implementation Calendar
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

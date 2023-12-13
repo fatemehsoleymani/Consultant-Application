@@ -1,0 +1,11 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+School Subject List
+{% endblock page_title %}
+{% block main_content %}
+{% for subject in subjects %}
+<li>
+<a href="{% url 'school_subject_detail' subject.pk %}">{{subject.subject_name}}</a>
+{% endfor %}
+    </li>
+{% endblock main_content %}

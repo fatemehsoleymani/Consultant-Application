@@ -1,0 +1,16 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+Assignment List
+{% endblock page_title %}
+{% block main_content %}
+{% for assignment in assignments %}
+<p><a href="{% url 'assignment_detail' assignment.pk%}">
+    {% if assignment.school_subject %}
+    {{ assignment.school_subject}}
+    {% endif %}
+    {% if assignment.institute_subject %}
+    {{ assignment.institute_subject}}
+    {% endif %}
+</a> </p>
+{% endfor %}
+{% endblock main_content %}

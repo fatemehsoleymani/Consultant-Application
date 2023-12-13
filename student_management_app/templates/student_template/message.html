@@ -1,0 +1,13 @@
+{% extends 'student_template/base_template.html' %}
+{% block page_title %}
+Message List
+{% endblock page_title %}
+{% block main_content %}
+{% if message %}
+ <h2>Your message has been added.</h2>
+ <p><a href="{% url 'assignment_detail' assignment.pk %}">Back to the assignment</a></p>
+ {% else %}
+ {% include "student_template/includes/message_form.html" %}
+ {% endif %}
+
+{% endblock main_content %}

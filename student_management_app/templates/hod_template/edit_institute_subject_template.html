@@ -1,0 +1,94 @@
+{% extends 'hod_template/base_template.html' %}
+{% block page_title %}
+Edit Subject | Subject ID : {{ subject.id }}
+{% endblock page_title %}
+{% block main_content %}
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Edit Institute Subject</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form role="form" action="/edit_institute_subject_save" method="post">
+                  {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label> Subject Name </label>
+                    <input type="text" class="form-control" name="subject_name" placeholder="Enter Subject" value="{{ subject.subject_name }}">
+                    <input type="hidden" class="form-control" name="subject_id" placeholder="Enter Subject" value="{{ subject.id }}">
+                  </div>
+                  <div class="form-group">
+                    <label>Student</label>
+                    <select class="form-control" name="student">
+                        {% for student in students %}
+                          <option value="{{ student.id }}" {% if student.id == subject.student_id.id %} selected {% endif %}>{{ student.first_name }} {{ student.last_name }}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+                     <div class="form-group">
+                    <label>Teacher Name </label>
+                    <input type="text" class="form-control" name="teacher_name" placeholder="Enter Name" value="{{ subject.teacher_name }}">
+                     </div>
+                    <div class="form-group">
+                    <label>Time Studying </label>
+                    <input type="text" class="form-control" name="total_time_studying_per_week" placeholder="Enter Time" value="{{ subject.total_time_studying_per_week }}">
+                     </div>
+                    <div class="form-group">
+                    <label>Total Class Time</label>
+                    <input type="text" class="form-control" name="total_time_in_class_per_week" placeholder="Enter Time" value="{{ subject.total_time_in_class_per_week }}">
+                     </div>
+                    <div class="form-group">
+                    <label>Has Test</label>
+                    <input type="text" class="form-control" name="has_test_in_class" placeholder="Enter Yes/No" value="{{ subject.has_test_in_class }}">
+                     </div>
+                     <div class="form-group">
+                    <label>Test Percentage</label>
+                    <input type="text" class="form-control" name="average_test_percentage" placeholder="Enter Percentage" value="{{ subject.average_test_percentage }}">
+                     </div>
+                      <div class="form-group">
+                    <label>Total Test</label>
+                    <input type="text" class="form-control" name="total_test_numbers" placeholder="Enter Total Test" value="{{ subject.total_test_numbers }}">
+                     </div>
+                     <div class="form-group">
+                    <label>Target Test</label>
+                    <input type="text" class="form-control" name="target_test_numbers" placeholder="Enter Target" value="{{ subject.target_test_numbers }}">
+                     </div>
+
+
+                   <div class="form-group">
+                      {% if messages %}
+                        {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% if message.tags == 'success' %}
+                        <div class="alert alert-success" style="margin-top:10px">{{ message }}</div>
+                        {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary btn-block">Save Subject</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+
+
+
+          </div>
+          </div>
+      </div>
+    </section>
+    <!-- /.content -->
+{% endblock main_content %}
